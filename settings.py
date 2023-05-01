@@ -18,6 +18,7 @@ ACTORS_PATH = 'output/actors_movies_characters_task4.csv'
 COUNT_ADULT_PATH = 'output/count_adult_movies_task5.csv'
 AMOUNT_OF_EPISODES_PATH = 'output/amount_of_episodes_task6.csv'
 MOST_POPULAR_BY_DECADES_PATH = 'output/most_popular_by_decades_task7.csv'
+MOST_POPULAR_BY_GENRE_PATH = 'output/most_popular_by_genre_task8.csv'
 
 title_akas_schema = t.StructType([t.StructField('titleId', t.StringType(), False),
                                   t.StructField('ordering', t.IntegerType(), False),

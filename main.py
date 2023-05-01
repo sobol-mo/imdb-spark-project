@@ -14,6 +14,7 @@ from pyspark.sql import SparkSession
 # from task5 import task5
 from task6 import task6
 from task7 import task7
+from task8 import task8
 
 
 def main():
@@ -51,7 +52,10 @@ def main():
     # task6(spark_session, write_in_file=False)
 
     # Task 7:
-    task7(spark_session, write_in_file=True)
+    # task7(spark_session, write_in_file=True)
+
+    # Task 8:
+    task8(spark_session, write_in_file=True)
 
     print('All operations completed in:', datetime.now() - start_time)
 
