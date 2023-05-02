@@ -1,3 +1,7 @@
+"""Task 5. Get information about how many adult movies/series etc. there are per
+region. Get the top 100 of them from the region with the biggest count to
+the region with the smallest one.
+"""
 import pyspark.sql.functions as f
 
 import settings as sts
@@ -5,13 +9,22 @@ from read_write import write, read_spark_df
 
 
 def task5(spark_session, write_in_file):
+    """Task 5. Get information about how many adult movies/series etc. there are per
+    region. Get the top 100 of them from the region with the biggest count to
+    the region with the smallest one.
+    :param spark_session:spark session
+    :param write_in_file:logic key whether to write results in file
+    :return:
+    """
     title_basics_df = read_spark_df(spark_session, sts.TITLE_BASICS_PATH, sts.title_basics_schema)
     title_akas_df = read_spark_df(spark_session, sts.TITLE_AKAS_PATH, sts.title_akas_schema)
 
-    title_basics_df = title_basics_df.withColumn('isAdult', f.when(f.col('isAdult').isin('0', '1'), f.col('isAdult'))
+    title_basics_df = title_basics_df.withColumn('isAdult', f.when(f.col('isAdult').isin('0', '1'),
+                                                                   f.col('isAdult'))
                                                  .otherwise('\\N'))
 
-    title_basics_df = title_basics_df.select(f.col('tconst'), f.col('isAdult')).where(f.col('isAdult') == '1')
+    title_basics_df = title_basics_df.select(f.col('tconst'),
+                                             f.col('isAdult')).where(f.col('isAdult') == '1')
     title_basics_df.show()
 
     title_akas_df = title_akas_df.withColumnRenamed('titleId', 'tconst')
