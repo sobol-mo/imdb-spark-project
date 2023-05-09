@@ -35,7 +35,6 @@ def write_spark(source_df, path):
     :return: void
     """
     source_df.write.csv(path, header=True, mode='overwrite')
-    # source_df.coalesce(1).write.csv('output/ua_titles_task1.csv')
 
 
 def write_2(source_df, path):
