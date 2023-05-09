@@ -2,7 +2,7 @@
 import pyspark.sql.functions as f
 
 import settings as sts
-from read_write import write
+from read_write import write_spark
 
 
 def task2(source_df, write_in_file):
@@ -21,4 +21,4 @@ def task2(source_df, write_in_file):
                                           & (f.col('birthYear') < f.lit('1901-01-01'))))
     source_df.show()
     if write_in_file:
-        write(source_df, sts.BORN_IN_19TH_PATH)
+        write_spark(source_df, sts.BORN_IN_19TH_PATH)

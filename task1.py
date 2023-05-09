@@ -2,7 +2,7 @@
 import pyspark.sql.functions as f
 
 import settings as sts
-from read_write import write
+from read_write import write_spark
 
 def task1(source_df, write_in_file):
     """Task 1. Get all titles of series/movies etc. that are available in Ukrainian.
@@ -14,4 +14,4 @@ def task1(source_df, write_in_file):
     source_df = source_df.select(f.col('title')).where(f.col('region') == 'UA')
     source_df.show()
     if write_in_file:
-        write(source_df, sts.UA_TITLES_PATH)
+        write_spark(source_df, sts.UA_TITLES_PATH)

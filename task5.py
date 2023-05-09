@@ -5,7 +5,7 @@ the region with the smallest one.
 import pyspark.sql.functions as f
 
 import settings as sts
-from read_write import write, read_spark_df
+from read_write import write_spark, read_spark_df
 
 
 def task5(spark_session, write_in_file):
@@ -40,4 +40,4 @@ def task5(spark_session, write_in_file):
     expanded_imdb_df.show()
 
     if write_in_file:
-        write(expanded_imdb_df, sts.COUNT_ADULT_PATH)
+        write_spark(expanded_imdb_df, sts.COUNT_ADULT_PATH)

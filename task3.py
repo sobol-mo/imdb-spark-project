@@ -2,7 +2,7 @@
 import pyspark.sql.functions as f
 
 import settings as sts
-from read_write import write
+from read_write import write_spark
 
 
 def task3(source_df, write_in_file):
@@ -18,4 +18,4 @@ def task3(source_df, write_in_file):
                                   ).where((f.col('runtimeMinutes') > 2*60)))
     source_df.show()
     if write_in_file:
-        write(source_df, sts.MORE_THAN_2HR_PATH)
+        write_spark(source_df, sts.MORE_THAN_2HR_PATH)

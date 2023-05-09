@@ -5,7 +5,7 @@ from pyspark.sql import Window
 from pyspark.sql.functions import floor, year
 
 import settings as sts
-from read_write import write, read_spark_df
+from read_write import write_spark, read_spark_df
 
 
 
@@ -52,4 +52,4 @@ def task7(spark_session, write_in_file):
     most_popular_df.show(50)
 
     if write_in_file:
-        write(most_popular_df, sts.MOST_POPULAR_BY_DECADES_PATH)
+        write_spark(most_popular_df, sts.MOST_POPULAR_BY_DECADES_PATH)

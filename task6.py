@@ -5,7 +5,7 @@ episodes.
 import pyspark.sql.functions as f
 
 import settings as sts
-from read_write import write, read_spark_df
+from read_write import write_spark, read_spark_df
 
 
 def task6(spark_session, write_in_file):
@@ -47,4 +47,4 @@ def task6(spark_session, write_in_file):
     series_grouped.show()
 
     if write_in_file:
-        write(series_grouped, sts.AMOUNT_OF_EPISODES_PATH)
+        write_spark(series_grouped, sts.AMOUNT_OF_EPISODES_PATH)
